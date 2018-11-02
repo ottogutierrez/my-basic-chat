@@ -1,6 +1,15 @@
 var app = new Vue({
     el: '#app',
     data: {
-      message: 'Hello Vue!'
+      messages: [
+          'first comment', 'second comment'
+      ],
+      currentMessage: '',
+    },
+    methods: {
+        sendMessage: function(){
+            this.messages.push(this.currentMessage)
+            this.currentMessage = ''
+        }
     }
   })

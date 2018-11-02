@@ -1,5 +1,8 @@
 .chatContainer {
     display: flex;
+    margin-top: 10%;
     margin-left: 30%;
     margin-right: 30%;
+    border: 2px solid gainsboro;
+    flex-flow: column nowrap;
 }

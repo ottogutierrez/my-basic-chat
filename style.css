@@ -4,5 +4,14 @@
     margin-left: 30%;
     margin-right: 30%;
     border: 2px solid gainsboro;
-    flex-flow: column nowrap;
+    flex-flow: column nowrap;   
 }
+
+.chat-list {
+    overflow-y: scroll;
+    height: 150px;
+    background: gray;
+    margin: 0;
+    padding-bottom: 3px;
+}
+

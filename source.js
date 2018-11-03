@@ -10,6 +10,16 @@ var app = new Vue({
         sendMessage: function(){
             this.messages.push(this.currentMessage)
             this.currentMessage = ''
+            scrollDiv()
         }
     }
   })
+
+  function scrollDiv() {
+    setTimeout(()=> {
+        var div = document.getElementById('chat-list-ul');
+    div.scrollTop = div.scrollHeight;
+    }, 10);
+    
+
+  }

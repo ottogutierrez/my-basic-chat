@@ -13,6 +13,7 @@
     "electron": "^3.0.8"
   },
   "dependencies": {
-    "dialogflow": "^0.7.0"
+    "dialogflow": "^0.7.0",
+    "grpc": "^1.16.0"
   }
 }

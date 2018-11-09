@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { SessionsClient } = require('dialogflow');
 
-const keyPath = './agentotto-999ff-0ebe33b87b0e.json'
+const keyPath = './agentotto-999ff-b91a1aa59294.json'
 const projectId = 'agentotto-999ff'
 
 const dialogflowClient = new SessionsClient({

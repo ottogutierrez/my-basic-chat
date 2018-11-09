@@ -3,10 +3,16 @@ const { SessionsClient } = require('dialogflow');
 
 const keyPath = './agentotto-999ff-b91a1aa59294.json'
 const projectId = 'agentotto-999ff'
+const sessionId = 'quickstart-session-id';
+const languageCode = 'en-US';
+
 
 const dialogflowClient = new SessionsClient({
   keyFilename: keyPath
 })
+
+// Define session path
+const sessionPath = dialogflowClient.sessionPath(projectId, sessionId);
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -62,7 +68,38 @@ app.on('activate', () => {
 
 
 ipcMain.on('newMessage', (event,arg)=>{
-  console.log('new message: ' + arg)
-  event.sender.send('messageFromBot', "reply from bot!")
+  //console.log('new message: ' + arg)
+  //event.sender.send('messageFromBot', "reply from bot!")
   
+  const request = {
+    session: sessionPath,
+    queryInput: {
+      text: {
+        text: arg,
+        languageCode: languageCode,
+      },
+    },
+  };
+
+  // Send request and log result
+  dialogflowClient
+  .detectIntent(request)
+  .then(responses => {
+    console.log('Detected intent');
+    const result = responses[0].queryResult;
+    console.log(result)
+    console.log(`  Query: ${result.queryText}`);
+    console.log(`  Response: ${result.fulfillmentText}`);
+    const messageToBot= '--Bot: ' +  result.fulfillmentText
+    event.sender.send('messageFromBot',messageToBot)
+    if (result.intent) {
+      console.log(`  Intent: ${result.intent.displayName}`);
+    } else {
+      console.log(`  No intent matched.`);
+    }
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });
+
 })

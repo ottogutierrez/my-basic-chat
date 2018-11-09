@@ -4,7 +4,7 @@ var app = new Vue({
     el: '#app',
     data: {
       messages: [
-          'first comment', 'second comment'
+          'Start typing your messages to the bot'
       ],
       currentMessage: '',
     },

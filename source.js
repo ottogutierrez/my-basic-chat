@@ -17,6 +17,7 @@ var app = new Vue({
                 var div = document.getElementById('chat-list-ul');
                 div.scrollTop = div.scrollHeight;
             })
+            document.querySelector('#messageInput').focus()
             ipcRenderer.send('newMessage', tempMessage)
 
         },

@@ -1,8 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { SessionsClient } = require('dialogflow');
+const dotenv = require('dotenv')
+dotenv.config()
 
-const keyPath = './agentotto-999ff-b91a1aa59294.json'
-const projectId = 'agentotto-999ff'
+const keyPath = process.env.KEY_PATH
+const projectId = process.env.PROJECT_ID
 const sessionId = 'quickstart-session-id';
 const languageCode = 'en-US';
 

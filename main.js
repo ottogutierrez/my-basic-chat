@@ -87,18 +87,25 @@ ipcMain.on('newMessage', (event,arg)=>{
   dialogflowClient
   .detectIntent(request)
   .then(responses => {
-    console.log('Detected intent');
+    //console.log('Detected intent');
     const result = responses[0].queryResult;
-    console.log(result)
-    console.log(`  Query: ${result.queryText}`);
-    console.log(`  Response: ${result.fulfillmentText}`);
+    //console.log(result)
+    //console.log(`  Query: ${result.queryText}`);
+    //console.log(`  Response: ${result.fulfillmentText}`);
     const messageToBot= '--Bot: ' +  result.fulfillmentText
     event.sender.send('messageFromBot',messageToBot)
-    if (result.intent) {
-      console.log(`  Intent: ${result.intent.displayName}`);
-    } else {
-      console.log(`  No intent matched.`);
+    // if (result.intent) {
+    //   console.log(`  Intent: ${result.intent.displayName}`);
+    // } else {
+    //   console.log(`  No intent matched.`);
+    // }
+
+    // Check if the intent has all the parameters
+    if (result.allRequiredParamsPresent == true) {
+      console.log('finished intent')
+      console.log('Action: '+ result.action)
     }
+
   })
   .catch(err => {
     console.error('ERROR:', err);

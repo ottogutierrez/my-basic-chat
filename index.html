@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,11 +15,17 @@
 
       </ul>
       <div class="chat-controller">
-        <input v-model="currentMessage" type="text" placeholder="Message...">
-        <button v-on:click="sendMessage">Send</button>
+        <input id="messageInput" v-model="currentMessage" type="text" placeholder="Message..." autofocus>
+        <button id="messageButton" v-on:click="sendMessage">Send</button>
       </div>
     </div>
     <script src="source.js"></script>
-    
+    <script>
+      document.querySelector("#messageInput").addEventListener("keyup", event => {
+        if(event.key !== "Enter") return; // Use `.key` instead.
+        document.querySelector("#messageButton").click(); // Things you want to do.
+        event.preventDefault(); // No need to `return false;`.
+      });
+    </script>
   </body>
 </html>

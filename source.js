@@ -1,25 +1,36 @@
+const {ipcRenderer} = require('electron')
+
 var app = new Vue({
     el: '#app',
     data: {
       messages: [
-          'first comment', 'second comment'
+          'Start typing your messages to the bot'
       ],
       currentMessage: '',
     },
     methods: {
         sendMessage: function(){
-            this.messages.push(this.currentMessage)
+            var tempMessage = this.currentMessage
+            this.messages.push(tempMessage)
             this.currentMessage = ''
-            scrollDiv()
+            Vue.nextTick(function () {
+                var div = document.getElementById('chat-list-ul');
+                div.scrollTop = div.scrollHeight;
+            })
+            document.querySelector('#messageInput').focus()
+            ipcRenderer.send('newMessage', tempMessage)
+
+        },
+        newMessageFromBot: function(arg){
+            this.messages.push(arg)
+            Vue.nextTick(function () {
+                var div = document.getElementById('chat-list-ul');
+                div.scrollTop = div.scrollHeight;
+            })
         }
     }
   })
 
-  function scrollDiv() {
-    setTimeout(()=> {
-        var div = document.getElementById('chat-list-ul');
-    div.scrollTop = div.scrollHeight;
-    }, 10);
-    
-
-  }
+  ipcRenderer.on('messageFromBot',(event,arg)=>{
+      app.newMessageFromBot(arg)
+  })

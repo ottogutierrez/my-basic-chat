@@ -4,14 +4,22 @@ var app = new Vue({
     el: '#app',
     data: {
       messages: [
-          'Start typing your messages to the bot'
+          {
+              type: 'bot',
+              content: 'Start typing your messages to the bot'
+          }
+          
       ],
       currentMessage: '',
     },
     methods: {
         sendMessage: function(){
             var tempMessage = this.currentMessage
-            this.messages.push(tempMessage)
+            const messageObj = {
+                type: 'user',
+                content: tempMessage
+            }
+            this.messages.push(messageObj)
             this.currentMessage = ''
             Vue.nextTick(function () {
                 var div = document.getElementById('chat-list-ul');
@@ -22,7 +30,11 @@ var app = new Vue({
 
         },
         newMessageFromBot: function(arg){
-            this.messages.push(arg)
+            const messageObj = {
+                type: 'bot',
+                content: arg
+            }
+            this.messages.push(messageObj)
             Vue.nextTick(function () {
                 var div = document.getElementById('chat-list-ul');
                 div.scrollTop = div.scrollHeight;
@@ -30,6 +42,8 @@ var app = new Vue({
         }
     }
   })
+
+
 
   ipcRenderer.on('messageFromBot',(event,arg)=>{
       app.newMessageFromBot(arg)

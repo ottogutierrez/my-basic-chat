@@ -43,6 +43,8 @@ var app = new Vue({
     }
   })
 
+
+
   ipcRenderer.on('messageFromBot',(event,arg)=>{
       app.newMessageFromBot(arg)
   })

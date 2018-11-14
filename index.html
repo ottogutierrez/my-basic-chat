@@ -13,7 +13,7 @@
     <div id="app" class="chatContainer">
       <ul id="chat-list-ul" class="chat-list">
         <li  v-for="message in messages">
-          <span class="message">
+          <span  v-bind:class="message.type">
               {{message.content}}
           </span>
           

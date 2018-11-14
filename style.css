@@ -1,26 +1,110 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 12pt;
+}
+
 .chatContainer {
     display: flex;
     margin-top: 10%;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-self: center;
     border: 2px solid gainsboro;
     flex-flow: column nowrap;   
 }
+li {
+    margin-bottom: 20px;
+    margin-right: 1px;
+    margin-left: 1px;
+    padding: 5px;
+}
+.bot, .user {
+    /* background: #cfd8dc;
+    border-radius: 8px 8px 8px 0px;
+    padding: 8px; */
+    margin-top: 20px;
+    padding: 5px 9px;
+    max-width: 50%;
+    clear: both;
+    position: relative;
+    
+}
+
+.bot {
+    /* ---- */
+    float: left;
+    margin-right: auto;
+    -webkit-border-radius: 8px 8px 8px 0px;
+    -moz-border-radius: 8px 8px 8px 0px;
+    -o-border-radius: 8px 8px 8px 0px;
+    -ms-border-radius: 8px 8px 8px 0px;
+    border-radius: 8px 8px 8px 0px;
+    background-color: #65B045;
+    color: #ffffff;
+}
+
+.bot:before {
+    /* border-bottom: 10px solid blue;
+    border-left: 9px solid blue;
+    bottom: 0;
+    left: -8px;
+    border-bottom-right-radius: 13px; */
+    border-bottom: 10px solid #65B045;
+    border-left: 9px solid rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+    content: "";
+}
+
+.user{
+    float: right;
+    margin-left: auto;
+    text-align: right;
+    -webkit-border-radius: 8px 8px 0px 8px;
+    -moz-border-radius: 8px 8px 0px 8px;
+    -o-border-radius: 8px 8px 0px 8px;
+    -ms-border-radius: 8px 8px 0px 8px;
+    border-radius: 8px 8px 0px 8px;
+    background-color: #07D;
+    color: white;
+}
+
+.user:before {
+    border-bottom: 9px solid #07D;
+    border-right: 9px solid rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: 0;
+    right: -8px;
+    content: "";
+}
+
+
+ul{ list-style-type: none;}
 
 .chat-list {
     overflow-y: scroll;
-    height: 150px;
-    margin: 0;
+    height: 300px;
+    margin: 0px;
     padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 10px;
 }
 
 .chat-controller{
     display: flex;
     flex-flow: row wrap;
+    height: 30px;
+    border-top: 1px solid gainsboro;
 }
 
 input {
     flex-grow: 1;
+    border: none;
+    margin: 2px;
+    padding: 5px;
 }
 
 

@@ -92,7 +92,7 @@ ipcMain.on('newMessage', (event,arg)=>{
     //console.log(result)
     //console.log(`  Query: ${result.queryText}`);
     //console.log(`  Response: ${result.fulfillmentText}`);
-    const messageToBot= '--Bot: ' +  result.fulfillmentText
+    const messageToBot = result.fulfillmentText
     event.sender.send('messageFromBot',messageToBot)
     // if (result.intent) {
     //   console.log(`  Intent: ${result.intent.displayName}`);
